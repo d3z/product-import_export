@@ -1,5 +1,5 @@
-require 'test/unit'
-require_relative '../csv_product_importer'
+require "test/unit"
+require_relative "../csv_product_importer"
 
 class CSVProductImporterTest < Test::Unit::TestCase
 
