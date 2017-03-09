@@ -11,6 +11,9 @@
 # fields, they help in testing. With a builder, we only
 # need set the fields that we"re testing rather than
 # call, possibly long, constructors in each test.
+
+require_relative 'product'
+
 class ProductBuilder
 
   def self.build
@@ -47,7 +50,9 @@ class ProductBuilder
   end
 
   def with_quantity_on_hand(quantity_on_hand)
-    @product.quantity_on_hand = quantity_on_hand
+    @product.quantity_on_hand = Float(quantity_on_hand)
+  rescue
+    raise "Invalid numeric value #{quantity_on_hand}"
   end
 
   def add_modifier(modifier)
