@@ -1,4 +1,5 @@
 require "test/unit"
+
 require_relative "../product_builder"
 require_relative "../product"
 
@@ -19,12 +20,22 @@ class ProductBuilderTest < Test::Unit::TestCase
   end
 
   def test_builder_can_add_a_modifier_to_the_product
-    modifier = Modifier.new("Dummy modifier", 42.0)
+    modifier_name = "Dummy modifier"
+    modifier_price = "$42.03"
     product = ProductBuilder.build do |builder|
-      builder.add_modifier(modifier)
+      builder.add_modifier(modifier_name, modifier_price)
     end
     assert_equal(product.modifiers.count, 1)
-    assert_equal(product.modifiers[0], modifier)
+    assert_equal(product.modifiers[0].name, modifier_name)
+    assert_equal(product.modifiers[0].price, 42.03)
+  end
+
+  def test_bulder_raises_error_on_invalid_price_for_modifier
+    assert_raises(RuntimeError) {
+      ProductBuilder.build do |builder|
+        builder.add_modifier("dummy", "this_is_not_my_money")
+      end
+    }
   end
 
   def test_builder_raises_error_on_invalid_price_type

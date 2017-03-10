@@ -55,7 +55,8 @@ class ProductBuilder
     raise "Invalid numeric value #{quantity_on_hand}"
   end
 
-  def add_modifier(modifier)
+  def add_modifier(name, price)
+    modifier = Modifier.new(name, convert_currency_string_to_numeric(price))
     @product.modifiers << modifier
   end
 
@@ -63,13 +64,12 @@ class ProductBuilder
 
   private
   def validate_price_type(price_type)
-
     raise "Invalid price type #{price_type}" unless VALID_PRICE_TYPES.include?(price_type)
   end
 
   def convert_currency_string_to_numeric(value)
     # let"s be super-lazy and just work with dollar values here
-    # also, we"re not dealing with comma"s in the value here
+    # also, we"re not dealing with comma's in the value here
     # like I said, super-lazy
     currency_without_symbol = /(?:\$)?(\d*(?:\.\d{2})?)/.match(value)[1]
     Float(currency_without_symbol)
