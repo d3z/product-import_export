@@ -24,5 +24,6 @@ I decided that the importer and exporters would deal with strings as much as pos
 easier.
 
 Once the importers were importing and the exporters were ... exporting, I cobbled together the `ProductDataTransposer` class
-that wired it all together. Simply register the importers and exporters with it, and it should (it does, it probably does) 
-find the right importer and exporter for the filenames you pass it.
+that wired it all together (again, I wrote this before that so, it's very likely got a different name). Simply register the 
+importers and exporters with it, and it should (it does, it probably does) find the right importer and exporter for the 
+filenames you pass it (Strategy, FTW!).
