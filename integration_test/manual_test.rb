@@ -9,5 +9,4 @@ exporter = JSONProductExporter.new
 transposer.register_importer(importer).for_file_type("csv")
 transposer.register_exporter(exporter).for_file_type("json")
 
-time = Time.now.getutc
-transposer.import_from("../data/example.csv").and.export_to("../data/example#{time}.json")
+transposer.import_from("../data/example.csv").and.export_to("../data/example#{Time.now.to_i}.json")
