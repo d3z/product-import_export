@@ -39,12 +39,6 @@ class CSVProductImporterTest < Test::Unit::TestCase
     assert_equal(0.80, product.modifiers[1].price)
   end
 
-  def test_importer_does_not_set_price_when_price_type_is_open
-    products = @target.import(csv_with_open_price_type)
-    product = products[0]
-    assert_equal(nil, product.price)
-  end
-
   private
   def csv_header_without_modifiers
     "item id,description,price,cost,price_type,quantity_on_hand"
@@ -65,8 +59,5 @@ class CSVProductImporterTest < Test::Unit::TestCase
   def csv_with_modifiers
     "#{csv_header_with_modifiers}\n111010,Coffee,$1.25,$0.80,system,100000,small,$0.45,medium,$0.80"
   end
-
-  def csv_with_open_price_type
-    "#{csv_header_without_modifiers}\n111784,Delivery,,,open"
-  end
+  
 end

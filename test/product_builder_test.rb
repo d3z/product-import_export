@@ -88,4 +88,11 @@ class ProductBuilderTest < Test::Unit::TestCase
     assert_equal(nil, product.quantity_on_hand)
   end
 
+  def test_builder_does_not_try_to_convert_nil_currency_values
+    product = ProductBuilder.build do |builder|
+      builder.with_price(nil)
+    end
+    assert_equal(nil, product.price)
+  end
+
 end

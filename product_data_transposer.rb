@@ -26,6 +26,7 @@ class ProductDataTransposer
         importer = importer_for(filename)
         data = @file_handler.read_data_from(filename)
         @products = importer.import(data)
+        self
     end
 
     def export_to(filename)

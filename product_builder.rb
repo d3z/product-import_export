@@ -68,6 +68,7 @@ class ProductBuilder
   end
 
   def convert_currency_string_to_numeric(value)
+    return nil if value == nil
     currency_without_symbol = value.gsub(/\$/,"")
     Float(currency_without_symbol)
   rescue
