@@ -6,6 +6,18 @@ class Product
     @modifiers = []
   end
 
+  def to_json(options=nil)
+    {
+      "item id" => @id,
+      "description" => @description,
+      "price" => @price,
+      "cost" => @cost,
+      "price_type" => @price_type,
+      "quantity_on_hand" => @quantity_on_hand,
+      "modifiers" => @modifiers
+    }.to_json
+  end
+
 end
 
 class Modifier
@@ -15,6 +27,13 @@ class Modifier
   def initialize(name, price)
     @name = name
     @price = price
+  end
+
+  def to_json(options=nil)
+    {
+      "name" => @name,
+      "price" => @price
+    }.to_json
   end
 
 end

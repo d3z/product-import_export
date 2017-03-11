@@ -1,7 +1,10 @@
+require 'json'
+
 class JSONProductExporter
 
-  def initialize(output_filename)
-
+  def export(products)
+    # let's not get too clever about this
+    JSON.dump(products)
   end
 
 end
