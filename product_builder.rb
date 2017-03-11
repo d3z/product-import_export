@@ -68,10 +68,7 @@ class ProductBuilder
   end
 
   def convert_currency_string_to_numeric(value)
-    # let"s be super-lazy and just work with dollar values here
-    # also, we"re not dealing with comma's in the value here
-    # like I said, super-lazy
-    currency_without_symbol = /(?:\$)?(\d*(?:\.\d{2})?)/.match(value)[1]
+    currency_without_symbol = value.gsub(/\$/,"")
     Float(currency_without_symbol)
   rescue
     raise "Invalid currency value #{value}"

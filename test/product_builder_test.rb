@@ -62,7 +62,11 @@ class ProductBuilderTest < Test::Unit::TestCase
   end
 
   def test_builder_converts_currency_value_to_number
-    {"$100" => 100.0, "$100.01" => 100.01, "100.02" => 100.02}.each do |string, value|
+    {
+      "$100" => 100.0, 
+      "$100.01" => 100.01, 
+      "100.02" => 100.02,
+      "-$10.40" => -10.4}.each do |string, value|
       product = ProductBuilder.build do |builder|
         builder.with_price(string)
       end
