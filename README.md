@@ -49,9 +49,25 @@ No.
 
 Yes.
 
+**Did you spend an inordinate amount of time at the start of this test being really fastidious and then rush it all at the very end?**
+
+No.
+
+...
+
+Yes.
+
 **You've mentioned _Bulider_ and _Strategy_ more than once in this README. Are you a pattern junkie?**
 
 No. That was a, perhaps misguided, trick to see if ShopKeep have filters in their process that catch and remove serial enterprise developers. Kind of a reverse SEO.
+
+**Did you run this code to see that it worked?**
+
+The tests passed.
+
+**Yea, but, did you _run_ the code?**
+
+The. Tests. Passed.
 
 **Do you really have one of those wood burners that everyone is talking about recently?**
 
