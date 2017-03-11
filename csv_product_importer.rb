@@ -19,6 +19,7 @@ class CSVProductImporter
   def build_product_for(product_details)
     ProductBuilder.build do |builder|
       add_normal_fields(builder, product_details)
+      add_price_fields(builder, product_details)
       add_modifier_fields(builder, product_details)
     end
   end
@@ -26,10 +27,14 @@ class CSVProductImporter
   def add_normal_fields(builder, product_details)
     builder.with_id(product_details["item id"])
     builder.with_description(product_details["description"])
-    builder.with_price(product_details["price"])
-    builder.with_cost(product_details["cost"])
-    builder.with_price_type(product_details["price_type"])
     builder.with_quantity_on_hand(product_details["quantity_on_hand"])
+  end
+
+  def add_price_fields(builder, product_details)
+    price_type = product_details["price_type"].downcase
+    builder.with_price_type(price_type)
+    builder.with_price(product_details["price"]) unless price_type == "open"
+    builder.with_cost(product_details["cost"]) unless price_type == "open"
   end
 
   def add_modifier_fields(builder, product_details)

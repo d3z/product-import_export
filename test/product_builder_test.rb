@@ -81,12 +81,11 @@ class ProductBuilderTest < Test::Unit::TestCase
     assert_equal(100, product.quantity_on_hand)
   end
 
-  def test_builder_raises_error_on_invalid_numeric_value
-    assert_raise(RuntimeError) {
-      ProductBuilder.build do |builder|
-        builder.with_quantity_on_hand("WAH!")
-      end
-    }
+  def test_builder_ignores_invalid_numeric_values
+    product = ProductBuilder.build do |builder|
+      builder.with_quantity_on_hand("WAH!")
+    end
+    assert_equal(nil, product.quantity_on_hand)
   end
 
 end

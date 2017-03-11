@@ -52,7 +52,7 @@ class ProductBuilder
   def with_quantity_on_hand(quantity_on_hand)
     @product.quantity_on_hand = Float(quantity_on_hand)
   rescue
-    raise "Invalid numeric value #{quantity_on_hand}"
+    @product.quantity_on_hand = nil
   end
 
   def add_modifier(name, price)
