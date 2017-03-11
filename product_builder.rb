@@ -50,7 +50,7 @@ class ProductBuilder
   end
 
   def with_quantity_on_hand(quantity_on_hand)
-    @product.quantity_on_hand = Float(quantity_on_hand)
+    @product.quantity_on_hand = Integer(quantity_on_hand)
   rescue
     @product.quantity_on_hand = nil
   end
