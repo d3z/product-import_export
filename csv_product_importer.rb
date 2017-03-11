@@ -43,8 +43,12 @@ class CSVProductImporter
     modifier_names.each do |key, modifier_name|
       modifier_price_key = key.gsub(/name/, "price")
       modifier_price = product_details[modifier_price_key]
-      builder.add_modifier(modifier_name, modifier_price)
+      builder.add_modifier(modifier_name, modifier_price) unless is_empty_modifier?(modifier_name, modifier_price)
     end
+  end
+
+  def is_empty_modifier?(name, price)
+    name == nil && price == nil
   end
 
 end
